@@ -37,13 +37,13 @@ class User extends Component{
                     const {dispatch} = value;
                     return (
                         <div className="col-md-8 mb-4" >
-                            <div className="card">
-                                <div className="card-header d-flex justify-content-between" onClick={this.onNameClicked}>
+                            <div className="card" >
+                                <div className="card-header d-flex justify-content-between" style={isVisible ? {backgroundColor: "#f06292"} : {backgroundColor: "#f3e5f5"}} onClick={this.onNameClicked}>
                                     <h4 className="d-inline" >{name}</h4>
                                     <i onClick={this.ondeleteUser.bind(this,dispatch)} className="fa fa-trash" style={{fontSize:30, cursor: "pointer"}} ></i>
                                 </div>
                                 {
-                                    isVisible ?  <div className="card-body">
+                                    isVisible ?  <div className="card-body"style={isVisible ? {backgroundColor: "#e1bee7"} : null}> 
                                     <p className="card-text">{department}</p>
                                     <p className="card-text"> {salary} </p>
             
@@ -63,7 +63,7 @@ User.propTypes = {
     name: PropTypes.string.isRequired,
     department: PropTypes.string.isRequired,
     salary: PropTypes.number.isRequired,
-    id : PropTypes.number.isRequired
+    id : PropTypes.string.isRequired
 }
 //Yukarıda static olarak da tanımlanır burada da olur
 // User.defaultProps = {
