@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "uniq-0",
+      "name": "Selami",
+      "department": "Data-Science",
+      "salary": 2000
+    },
+    {
+      "id": "uniq-1",
+      "name": "Mustafa",
+      "department": "Data-Science",
+      "salary": 4200
+    },
+    {
+      "id": "uniq-2",
+      "name": "Elif",
+      "department": "FS-Science",
+      "salary": 6200
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
- 
+import axios from "axios";
 
 const UserContext = React.createContext();
 //Provier, Consumer
@@ -24,30 +24,17 @@ const reducer = (state,action) => {
 
 export class UserProvider extends Component {
     state ={
-        users : [
-          {
-              id: "uniq-0",
-              name: "Selami",
-              department: "Data-Science",
-              salary: 2000
-          },
-          {
-              id: "uniq-1",
-              name: "Mustafa",
-              department: "Data-Science",
-              salary: 4200
-          },
-          {
-              id: "uniq-2",
-              name: "Elif",
-              department: "FS-Science",
-              salary: 6200
-          }
-      ],
+        users : [],
       dispatch : (action) => {
           this.setState(state => reducer(state,action));
       }
       }
+    componentDidMount = async () => {
+        const response = await axios.get("http://localhost:3004/users")
+        this.setState({
+            users: response.data
+        })
+    }
     render() {
         return (
             <UserContext.Provider value={this.state}>

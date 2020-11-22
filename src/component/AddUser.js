@@ -1,8 +1,9 @@
+import Axios from 'axios';
 import React, { Component } from 'react'
 import posed from "react-pose";
 import UserConsumer from "../context";
 
-var uniqid = require("uniqid");
+// var uniqid = require("uniqid");  Used for generating uniq id before api usage..
 const Animation = posed.div({
     visible: {opacity: 1, applyAtStart:{display:"block"}},
     hidden: {opacity: 0, applyAtEnd: {display: "none"}}
@@ -28,17 +29,17 @@ class AddUser extends Component {
         })
     }
     
-    addUser = (dispatch,e) => {
+    addUser =  async(dispatch,e) => {
         e.preventDefault();
         const {name,department,salary} = this.state;
-
         const newUser={
-            id: uniqid(),
+            // id: uniqid(),       here we used generated id by uniqid() func..
             name : name,
             department : department,
             salary : salary
         }
-        dispatch({type : "ADD_USER",payload : newUser});
+        const response = await Axios.post("http://localhost:3004/users",newUser)
+        dispatch({type : "ADD_USER",payload : response.data});
     }
     render() {
         const {visible,name,department,salary} = this.state;
